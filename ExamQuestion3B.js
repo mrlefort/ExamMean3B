@@ -44,7 +44,7 @@ MongoDB er et Document Store Type (Database)
 Man kan lave indexes på collections i MongoDB.
 Dette gør at man kan søge i databasen hurtigere.
 
-Hvis ikke der er en index kan man køre - db.collection.createIndex(). Der er bla  text og geospatial indexes.
+Hvis ikke der er en index kan man køre - db.collection.createIndex(). Der er bla text og geospatial indexes.
  */
 
 
@@ -82,6 +82,17 @@ TTL Indexes er til for at MongoDB selv sletter documenter fra en collection efte
 // Question 5 Explain how redis "fits" into the NoSQL world, and provide an example of how you -------------------------
 //have used it.
 
+
+
+
+
+
+
+// Question 6 ----- Explain, using a relevant example, a full MEAN application (the A, can be an ionic
+// application)
+
+// kør routes.js for at starte serveren og derefter højre klik og tryk kør på index.html
+// api pathsne er /create, /get, /delete, /update, og står under routes.js
 
 
 
@@ -206,9 +217,5 @@ exports.update =  function (cb)
 
 
 
-// Question 6 ----- Explain, using a relevant example, a full MEAN application (the A, can be an ionic
-// application)
 
-// kør routes.js for at starte serveren og derefter højre klik og tryk kør på index.html
-// api pathsne er /create, /get, /delete, /update, og står under routes.js
 

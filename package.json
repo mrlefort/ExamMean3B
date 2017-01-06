@@ -19,6 +19,7 @@
   "homepage": "https://github.com/mrlefort/ExamMean3B#readme",
   "dependencies": {
     "express": "^4.14.0",
-    "mongodb": "^2.2.19"
+    "mongodb": "^2.2.19",
+    "redis": "^2.6.3"
   }
 }

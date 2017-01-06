@@ -6,8 +6,24 @@
  */
 
 var express = require("express");
-var crud = require('./ExamQuestion3A')
+var crud = require('./ExamQuestion3B')
 var app = express();
+var redis = require("redis");
+
+var client = redis.createClient("redis://mrlefort:3a25f4e1c04c978e9e4216cf1ffcc8b2@50.30.35.9:3123/");
+client.on('connect', function ()
+{
+    console.log('connected');
+});
+
+
+client.set(1, "redis user");
+
+client.get(1, function(err, reply)
+{
+    console.log("her fra redis: " + reply);
+});
+
 
 var arr = ["her er array"];
 var intCreate = 0;
