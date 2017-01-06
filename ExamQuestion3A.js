@@ -43,6 +43,8 @@ MongoDB er et Document Store Type (Database)
 /*
 Man kan lave indexes på collections i MongoDB.
 Dette gør at man kan søge i databasen hurtigere.
+
+Hvis ikke der er en index kan man køre - db.collection.createIndex(). Der er bla  text og geospatial indexes.
  */
 
 
@@ -55,15 +57,14 @@ Dette gør at man kan søge i databasen hurtigere.
 //"special" indexes like TTL and 2dsphere
 
 /*
-TTL Indexes
+TTL Indexes er til for at MongoDB selv sletter documenter fra en collection efter en bestemt tid.
 
-TTL indexes are special indexes that MongoDB can use to automatically remove documents from a collection after a
-certain amount of time. This is ideal for certain types of information like machine generated event data, logs,
-    and session information that only need to persist in a database for a finite amount of time.
-
+ var user1 = {name: 'modulus admin', age: 42, roles: ['admin', 'moderator', 'user'], expireAt: new Date()};
+ userss.createIndex({"expireAt" : 1}, {expireAfterSeconds: 5})
 */
 
 /*
+
  A 2dsphere index supports queries that calculate geometries on an earth-like sphere. 2dsphere index supports all
  MongoDB geospatial queries: queries for inclusion, intersection and proximity. See the Geospatial Query Operators
  for the query operators that support geospatial queries.
@@ -72,8 +73,9 @@ certain amount of time. This is ideal for certain types of information like mach
  Indexed Field Restrictions). For legacy coordinate pairs, the index converts the data to GeoJSON Point.
  For details on the supported GeoJSON objects, see GeoJSON Objects.
 
-
  */
+
+
 
 
 
@@ -129,9 +131,13 @@ MongoClient.connect(url, function (err, db) {
 
 exports.insert =  function (cb)
 {
-    var user1 = {name: 'modulus admin', age: 42, roles: ['admin', 'moderator', 'user']};
+
+    var user1 = {name: 'modulus admin', age: 42, roles: ['admin', 'moderator', 'user'], expireAt: new Date()};
     var user2 = {name: 'modulus user', age: 22, roles: ['user']};
     var user3 = {name: 'modulus super admin', age: 92, roles: ['super-admin', 'admin', 'moderator', 'user']};
+
+    userss.createIndex({"expireAt" : 1}, {expireAfterSeconds: 5})
+
 userss.insertMany([user1, user2, user3], function (err, result) {
     if (err) {
         console.log(err);
@@ -145,6 +151,8 @@ userss.insertMany([user1, user2, user3], function (err, result) {
     dben.close();
 }
 
+
+exports
 
 exports.findAll =  function (cb)
 {
@@ -169,7 +177,6 @@ exports.deleteLast =  function (callback)
 userss.find().toArray(function (err, result) {
 console.log(result[result.length-1].age)
     userss.remove( { _id: result[result.length-1]._id }, function (x){
-        console.log("her er x" + x)
         callback("sletningen er gennemført")
         dben.close();
     } )
