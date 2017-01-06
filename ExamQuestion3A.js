@@ -1,6 +1,3 @@
-/**
- * Created by Dino on 1/6/2017.
- */
 
 
 
@@ -14,42 +11,13 @@
 // Bedre kontrol over tilgængeligheden.
 
 
-//  Question 2 -----    Explain Pros & Cons in using a NoSQL database like MongoDB as your data store,
-//     compared to a traditional Relational SQL Database like MySQL.
-
-/*
-NoSQL:
-Pros:
-Bruger JSON objekter i quereries
-God til at skalere
-God Performance
-Bruger ikke skemaer
-Bygget i nyere tid.
-Kører godt med clusters.
-Open Source
 
 
-Cons:
-Har ikke været rundt i lang tid.
-
-Den garantere ikke ACID (Atomicity, Consistency, Isolation, Durability)
-Atomicity
- Everything in a transaction must happen successfully or none of the changes are committed.
-
-Consistency
- The data will only be committed if it passes all the rules in place in the database
-
-Isolation
- Transactions won't affect other transactions by changing data that another operation is counting
-
-Durability
- Once data is committed, it is durably stored and safe against errors
- Instead it offers Eventual Consistency
-
-*/
 
 
-//  Question 3 -----    Explain how databases like MongoDB and redis would be classified in the NoSQL world
+
+
+//  Question 2 -----    Explain how databases like MongoDB and redis would be classified in the NoSQL world
 
 /*
 Hvad er Redis?
@@ -63,25 +31,61 @@ MongoDB er et Document Store Type (Database)
 
 */
 
-// Question 4 -----  Explain reasons to add a layer like Mongoose, on top on of a schema-less database
-// like MongoDB
+
+
+
+
+
+
+// Question 3 Explain about indexes in MongoDB, how to create them, and demonstrate how you ----------------------------
+//have used them.
 
 /*
-Det inkludere Skemaer
-Type casting er indbygget
-Validering (includeret  i MongoDB fra v. 3.2)
-Der findes middleware
-Man kan lave Quereries.
-
+Man kan lave indexes på collections i MongoDB.
+Dette gør at man kan søge i databasen hurtigere.
  */
 
 
 
 
-// Question 5 ----- Pick one of the two options below:
 
 
-//      Explain, and demonstrate, using relevant examples, the strategy for querying
+
+// Question 4 Explain, using your own code examples, how you have used some of MongoDB's -------------------------------
+//"special" indexes like TTL and 2dsphere
+
+/*
+TTL Indexes
+
+TTL indexes are special indexes that MongoDB can use to automatically remove documents from a collection after a
+certain amount of time. This is ideal for certain types of information like machine generated event data, logs,
+    and session information that only need to persist in a database for a finite amount of time.
+
+*/
+
+/*
+ A 2dsphere index supports queries that calculate geometries on an earth-like sphere. 2dsphere index supports all
+ MongoDB geospatial queries: queries for inclusion, intersection and proximity. See the Geospatial Query Operators
+ for the query operators that support geospatial queries.
+
+ The 2dsphere index supports data stored as GeoJSON objects and as legacy coordinate pairs (See also 2dsphere
+ Indexed Field Restrictions). For legacy coordinate pairs, the index converts the data to GeoJSON Point.
+ For details on the supported GeoJSON objects, see GeoJSON Objects.
+
+
+ */
+
+
+
+// Question 5 Explain how redis "fits" into the NoSQL world, and provide an example of how you -------------------------
+//have used it.
+
+
+
+
+// MongoDB -----------------------------------------------------------------------------------------------------
+
+
 //     MongoDB (all CRUD operations)
 
 
@@ -112,7 +116,7 @@ MongoClient.connect(url, function (err, db) {
 
 
 
-        // RUN HERE
+        // --- RUN HERE ---
 
         // update();
         // findAll();
